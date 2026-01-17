@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: javawebappdep
+  name: javawebapp-dep
   namespace: test-ns
 spec:
   replicas: 2
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: javawebapp
-        image: kkeducation12345/spring-app:1.0.5
+        image: mdprassadh/springboot:1.0.0
         ports:
         - containerPort: 8080
 ---
@@ -28,7 +28,7 @@ metadata:
   name: javawebappsvc
   namespace: test-ns
 spec:
-  type: NodePort
+  type: LoadBalancer 
   selector:
     app: javawebapp
   ports:
